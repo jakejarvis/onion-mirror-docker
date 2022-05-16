@@ -1,0 +1,9 @@
+Sandbox 1
+RunAsDaemon 0
+SocksPort 0
+
+HiddenServiceNonAnonymousMode 1
+HiddenServiceSingleHopMode 1
+
+HiddenServiceDir /var/lib/tor/
+HiddenServicePort 80 apache:80

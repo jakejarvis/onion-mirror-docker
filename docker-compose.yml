@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  tor:
+    build: ./tor
+    restart: always
+    volumes:
+      - ./torrc:/etc/tor/torrc:ro
+      - ./keys/:/var/lib/tor/:rw
+    depends_on:
+      - apache
+
+  apache:
+    image: ubuntu/apache2:2.4-20.04_beta
+    restart: always
+    volumes:
+      - ./apache2.conf:/etc/apache2/apache2.conf:ro
+    environment:
+      CLEARNET_DOMAIN: 'https://jarv.is'
+      ONION_DOMAIN: 'http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion'
